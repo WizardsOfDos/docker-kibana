@@ -14,7 +14,7 @@ RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' > /e
     DEBIAN_FRONTEND=noninteractive apt-get install -y oracle-java7-installer
 
 #ElasticSearch
-RUN curl https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.0.tar.gz | tar xz && \
+RUN curl https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.tar.gz | tar xz && \
     mv elasticsearch-* elasticsearch
 
 #Kibana
