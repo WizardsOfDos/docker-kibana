@@ -24,11 +24,6 @@ RUN curl https://download.elasticsearch.org/kibana/kibana/kibana-3.1.2.tar.gz | 
 #NGINX
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nginx
 
-#Logstash
-RUN curl https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar xz 
-#java -jar logstash-1.2.2-flatjar.jar agent -f docker-kibana/logstash.conf
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libzmq-dev
-
 #Add runit services
 ADD sv /etc/service 
 
@@ -36,5 +31,5 @@ ADD sv /etc/service
 ADD nginx.conf /etc/nginx/
 RUN sed -i -e 's|elasticsearch:.*|elasticsearch: "http://"+window.location.hostname + ":" + window.location.port,|' /kibana/config.js
 
-#80=ngnx, 9200=elasticsearch, 49021=logstash/zeromq
-EXPOSE 80 9200 49021
+#80=ngnx, 9200=elasticsearch
+EXPOSE 80 9200
